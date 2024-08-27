@@ -1,0 +1,72 @@
+{
+	"name": "fastbuild-task-provider",
+	"displayName": "FASTBuild Task Provider",
+	"description": "Task provider for FASTBuild build system.",
+	"version": "1.0.0",
+	"publisher": "SherAndrei",
+	"icon": "assets/fastbuild-task-provider-logo.png",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SherAndrei/fastbuild-task-provider"
+	},
+	"engines": {
+		"vscode": "^1.73.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:workbench.action.tasks.runTask"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"configuration": {
+			"title": "FASTBuild Task Provivder",
+			"properties": {
+				"fastbuild-task-provider.path.windows": {
+					"type": "string",
+					"default": "FBuild.exe",
+					"description": "The executable path in the Windows environment."
+				},
+				"fastbuild-task-provider.path.linux": {
+					"type": "string",
+					"default": "fbuild",
+					"description": "The executable path in the Linux environment."
+				},
+				"fastbuild-task-provider.args": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"-cacheread",
+						"-cachewrite"
+					],
+					"description": "Arguments to pass to FASTBuild executable."
+				}
+			}
+		},
+		"taskDefinitions": [
+			{
+				"type": "FASTBuild",
+				"properties": {
+					"task": {
+						"type": "string",
+						"description": "The FASTBuild task to perform"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w"
+	},
+	"devDependencies": {
+		"@types/node": "^18",
+		"@types/vscode": "^1.73.0",
+		"typescript": "^5.5.2"
+	}
+}

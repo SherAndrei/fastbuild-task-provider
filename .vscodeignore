@@ -1,0 +1,8 @@
+# Ignore everything
+**
+
+# Whitelist
+!out/*.js
+!README.md
+!LICENSE
+!assets/fastbuild-task-provider-logo.png
