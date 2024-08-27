@@ -5,7 +5,6 @@
 	"version": "1.0.0",
 	"publisher": "SherAndrei",
 	"icon": "assets/fastbuild-task-provider-logo.png",
-	"private": true,
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/SherAndrei/fastbuild-task-provider"
@@ -15,6 +14,10 @@
 	},
 	"categories": [
 		"Other"
+	],
+	"keywords": [
+		"bff",
+		"fastbuild"
 	],
 	"activationEvents": [
 		"onCommand:workbench.action.tasks.runTask"
