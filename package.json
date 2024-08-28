@@ -1,26 +1,19 @@
 {
 	"name": "fastbuild-task-provider",
-	"displayName": "FASTBuild Task Provider",
-	"description": "Task provider for FASTBuild build system.",
 	"version": "1.0.0",
 	"publisher": "SherAndrei",
-	"icon": "assets/fastbuild-task-provider-logo.png",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/SherAndrei/fastbuild-task-provider"
-	},
 	"engines": {
 		"vscode": "^1.73.0"
 	},
+	"license": "MIT",
+	"displayName": "FASTBuild Task Provider",
+	"description": "Task provider for FASTBuild build system.",
 	"categories": [
 		"Other"
 	],
 	"keywords": [
 		"bff",
 		"fastbuild"
-	],
-	"activationEvents": [
-		"onCommand:workbench.action.tasks.runTask"
 	],
 	"main": "./out/extension",
 	"contributes": {
@@ -62,14 +55,20 @@
 			}
 		]
 	},
+	"activationEvents": [
+		"onCommand:workbench.action.tasks.runTask"
+	],
+	"devDependencies": {
+		"@types/node": "^18",
+		"@types/vscode": "^1.73.0",
+		"typescript": "^5.5.2"
+	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -b",
 		"watch": "tsc -b -w"
 	},
-	"devDependencies": {
-		"@types/node": "^18",
-		"@types/vscode": "^1.73.0",
-		"typescript": "^5.5.2"
-	}
+	"icon": "assets/fastbuild-task-provider-logo.png",
+	"repository": "github:SherAndrei/fastbuild-task-provider",
+	"homepage": "https://github.com/SherAndrei/fastbuild-task-provider/blob/master/README.md"
 }
