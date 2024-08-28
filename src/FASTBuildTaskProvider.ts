@@ -1,6 +1,6 @@
-import * as path from 'path';
 import * as cp from 'child_process';
 import * as vscode from 'vscode';
+import { minimatch } from 'minimatch';
 import { platform } from 'os';
 
 let _channel: vscode.OutputChannel;
@@ -25,10 +25,6 @@ function exec(command: string, options: cp.ExecOptions): Promise<{ stdout: strin
 
 interface FASTBuildTaskDefinition extends vscode.TaskDefinition {
 	task: string;
-}
-
-function isTestTask(name: string): boolean {
-	return name.startsWith('Test-');
 }
 
 export class FASTBuildTaskProvider implements vscode.TaskProvider {
@@ -66,6 +62,14 @@ export class FASTBuildTaskProvider implements vscode.TaskProvider {
 			getOutputChannel().show(true);
 			this.executableArgs = [];
 		}
+	}
+
+	public isTestTask(name: string): boolean {
+		const config = vscode.workspace.getConfiguration('fastbuild-task-provider');
+		const glob_pattern = config.get('recognize-test-task');
+		if (typeof glob_pattern !== "string")
+			return false;
+		return minimatch(name, glob_pattern);
 	}
 
 	public provideTasks(): Thenable<vscode.Task[]> | undefined {
@@ -134,7 +138,7 @@ export class FASTBuildTaskProvider implements vscode.TaskProvider {
 							this.executablePath,
 							[...this.executableArgs, taskName]
 						));
-					task.group = isTestTask(taskName)
+					task.group = this.isTestTask(taskName)
 						? vscode.TaskGroup.Test
 						: vscode.TaskGroup.Build;
 					result.push(task);
