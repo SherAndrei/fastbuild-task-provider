@@ -40,6 +40,11 @@
 						"-cachewrite"
 					],
 					"description": "Arguments to pass to FASTBuild executable."
+				},
+				"fastbuild-task-provider.recognize-test-task": {
+					"type": "string",
+					"default": "*[Tt]est*",
+					"description": "Glob pattern that will be matched against task names to recognize test ones."
 				}
 			}
 		},
@@ -61,6 +66,7 @@
 	"devDependencies": {
 		"@types/node": "^18",
 		"@types/vscode": "^1.73.0",
+		"minimatch": "^10.0.1",
 		"typescript": "^5.5.2"
 	},
 	"scripts": {
