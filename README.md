@@ -19,9 +19,11 @@ This is the source code for the FASTBuild Task Provider. It auto-detects tasks i
 2. Select `Tasks: Run Build Task`, `ctrl` + `shift` + `b` by default.
 3. Type name of the desired configuration
 
-![Demo](https://raw.githubusercontent.com/SherAndrei/fastbuild-task-provider/master/assets/presentation.gif)
+![Build](https://raw.githubusercontent.com/SherAndrei/fastbuild-task-provider/master/assets/build.gif)
 
-Note: test configurations and corresponding test tasks are also supported
+Test configurations and corresponding test tasks are also supported
+
+![Test](https://raw.githubusercontent.com/SherAndrei/fastbuild-task-provider/master/assets/test.gif)
 
 ## Installation
 
