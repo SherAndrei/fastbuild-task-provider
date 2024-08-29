@@ -63,10 +63,12 @@
 	"activationEvents": [
 		"onCommand:workbench.action.tasks.runTask"
 	],
+	"dependencies": {
+		"minimatch": "^10.0.1"
+	},
 	"devDependencies": {
 		"@types/node": "^18",
 		"@types/vscode": "^1.73.0",
-		"minimatch": "^10.0.1",
 		"typescript": "^5.5.2"
 	},
 	"scripts": {
