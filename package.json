@@ -1,6 +1,6 @@
 {
 	"name": "fastbuild-task-provider",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"publisher": "SherAndrei",
 	"engines": {
 		"vscode": "^1.73.0"
