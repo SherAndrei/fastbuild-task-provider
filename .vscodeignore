@@ -2,7 +2,6 @@
 **
 
 # Whitelist
-!node_modules/**
 !out/*.js
 !README.md
 !LICENSE
