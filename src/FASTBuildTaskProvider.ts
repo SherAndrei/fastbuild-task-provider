@@ -64,12 +64,20 @@ export class FASTBuildTaskProvider implements vscode.TaskProvider {
 		}
 	}
 
-	public isTestTask(name: string): boolean {
+	public matchesGlob(config_name: string, name: string): boolean {
 		const config = vscode.workspace.getConfiguration('fastbuild-task-provider');
-		const glob_pattern = config.get('recognize-test-task');
+		const glob_pattern = config.get(config_name);
 		if (typeof glob_pattern !== "string")
 			return false;
 		return minimatch(name, glob_pattern);
+	}
+
+	public isPreferredToHide(name: string): boolean {
+		return this.matchesGlob('hide-task', name);
+	}
+
+	public isTestTask(name: string): boolean {
+		return this.matchesGlob('recognize-test-task', name);
 	}
 
 	public provideTasks(): Thenable<vscode.Task[]> | undefined {
@@ -125,6 +133,9 @@ export class FASTBuildTaskProvider implements vscode.TaskProvider {
 						continue;
 					}
 					const taskName = line.trim();
+					if (this.isPreferredToHide(taskName)) {
+						continue;
+					}
 					const kind: FASTBuildTaskDefinition = {
 						type: FASTBuildTaskProvider.FASTBuildType,
 						task: taskName

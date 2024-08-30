@@ -44,7 +44,12 @@
 				"fastbuild-task-provider.recognize-test-task": {
 					"type": "string",
 					"default": "*[Tt]est*",
-					"description": "Glob pattern that will be matched against task names to recognize test ones."
+					"description": "Glob pattern to recognize test targets."
+				},
+				"fastbuild-task-provider.hide-task": {
+					"type": "string",
+					"default": "",
+					"description": "Glob pattern to hide targets."
 				}
 			}
 		},
